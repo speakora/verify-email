@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <script>
+    window.onload = () => {
+      const url = new URL(window.location.href);
+
+      // If path is /login and has uuid+token, redirect
+      if (
+        url.pathname === '/login' &&
+        url.searchParams.has('uuid') &&
+        url.searchParams.has('token')
+      ) {
+        const uuid = url.searchParams.get('uuid');
+        const token = url.searchParams.get('token');
+
+        // Redirect to your Flutter app
+        const deepLink = `https://speakora.ca/verify?uuid=${uuid}&token=${token}`;
+        window.location.href = deepLink;
+      } else {
+        document.body.innerHTML = '<h2>Invalid or unsupported verification link.</h2>';
+      }
+    };
+  </script>
+</head>
+<body>
+  <h2>Redirecting to the app...</h2>
+</body>
+</html>
