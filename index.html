@@ -49,7 +49,23 @@
   <div class="card">
     <h1>Email Verified ✅</h1>
     <p>Your email has been successfully confirmed.</p>
-    <a href="https://speakora.ca" class="button">Go to App</a>
+    <a id="deepLinkButton" class="button">Go to App</a>
   </div>
+
+  <script>
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const uuid = params.get('uuid');
+      const token = params.get('token');
+
+      if (uuid && token) {
+        const deepLink = `speakora://verify?uuid=${uuid}&token=${token}`;
+        const button = document.getElementById('deepLinkButton');
+        button.setAttribute('href', deepLink);
+      } else {
+        document.body.innerHTML = "<h2>Missing verification parameters</h2>";
+      }
+    };
+  </script>
 </body>
 </html>
