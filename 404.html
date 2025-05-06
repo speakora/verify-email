@@ -17,7 +17,7 @@
         const token = url.searchParams.get('token');
 
         // Redirect to your Flutter app
-        const deepLink = `https://speakora.ca/verify?uuid=${uuid}&token=${token}`;
+        const deepLink = `https://verify.speakora.ca?uuid=${uuid}&token=${token}`;
         window.location.href = deepLink;
       } else {
         document.body.innerHTML = '<h2>Invalid or unsupported verification link.</h2>';
